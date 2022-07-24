@@ -9,7 +9,8 @@
 ### ***Ctrl+方向键：赶路好工具***
 #### 例子：如果你想要一直往上走，正常情况需要一直按住上方向键或者W键，这样做会非常累，这时候你就可以Ctrl+上方向键，让VampireBaby替你按住这个键。（**开新棺材的时候很有用**）
 ## ***MissingN FINO功能***
-### ***关于MissingN FINO请自行查看***：https://vampire-survivors.fandom.com/wiki/MissingN%E2%96%AF
+### ***关于MissingN FINO请自行查看***
+#### https://vampire-survivors.fandom.com/wiki/MissingN%E2%96%AF
 ### ***解决按键方向与移动方向相反的特性***
 #### 由于MissingN的特性是随机数值，因此一旦速度小于-100%那么就会导致按键和移动方向是相反。我将Home键改为下，End改为上，Delete改为右，Page Down改为左。该问题如图所示的解决了。
 #### ![Image](https://raw.githubusercontent.com/Waterkuiiiiii/VampireBaby/main/MdPic/KeyboardHEDP.png)
@@ -19,5 +20,5 @@
 #### **Ins(Insert)在图上红圈处。**
 #### ![Image](https://raw.githubusercontent.com/Waterkuiiiiii/VampireBaby/main/MdPic/KeyboardIns.png)
 #### ![Image](https://raw.githubusercontent.com/Waterkuiiiiii/VampireBaby/main/MdPic/Invicible%20Vampire%20After_cn.png)
-#### ***如何想要强制退出按下键盘上的PgUp键，如图上的红圈处。***
+#### ***如何想要强制退出该功能按下键盘上的PgUp键，如图上的红圈处。（本质上是重载脚本）***
 #### ![Image](https://raw.githubusercontent.com/Waterkuiiiiii/VampireBaby/main/MdPic/KeyboardPgUp.png)
