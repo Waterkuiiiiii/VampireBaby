@@ -58,7 +58,7 @@ MissingN(pAttemptsNum){
 
 	While, isToggle
 	{
-		;General Version is x, y, 0, 0, 4096, 2160, Path.
+		;General Version is x, y, 0, 0, 1920, 1080, Path.
 		ImageSearch, MinusZeroX, MinusZeroY, 166, 237, 474, 299, %A_ScriptDir%\Pictures\Max Health Minus Zero.png
 		If (ErrorLevel = 0)
 		{
