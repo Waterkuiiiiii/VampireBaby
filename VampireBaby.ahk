@@ -49,28 +49,67 @@ isToggle := false
 isFoundIt := false
 
 Ins::
+MissingNPrepareEgg()
+MissingNPrepare()
 attemptsNum := 0
-MissingN(attemptsNum)
+MissingN(attemptsNum, false)
 return
 
-MissingN(pAttemptsNum){
+^Ins::
+MissingNPrepareEgg()
+MissingNPrepare()
+attemptsNum := 0
+MissingN(attemptsNum, true)
+return
+
+;Determine if the golden egg is ticked and untick it if it is.
+MissingNPrepareEgg(){
+	ImageSearch, eggTickedX, eggTickedY, 367, 976, 417, 1025, %A_ScriptDir%\Pictures\EggTicked.png
+	If (ErrorLevel = 0)
+	{
+		MouseClick, Left, eggTickedX, eggTickedY, 1, 1
+	}
+}
+
+;Determine if the missingN is selected and deselected it if it is.
+MissingNPrepare(){
+	MouseMove, 946, 515, 1
+	Loop
+	{
+		ImageSearch, missingX, missingY, 555, 190, 1330, 890, %A_ScriptDir%\Pictures\MissingN.png
+		If (ErrorLevel = 0)
+		{
+			break
+		}
+		Send, {WheelDown}
+	}
+	MouseClick, Left, missingX + 87, missingY + 87, 1, 1
+}
+
+MissingN(pAttemptsNum, pIsCtrl){
 	isToggle := !isToggle
 
 	While, isToggle
 	{
-		ImageSearch, MinusZeroX, MinusZeroY, 166, 237, 474, 299, %A_ScriptDir%\Pictures\Max Health Minus Zero.png
+		ImageSearch, MinusZeroX, MinusZeroY, 180, 246, 486, 280, %A_ScriptDir%\Pictures\Max Health Minus Zero.png
 		If (ErrorLevel = 0)
 		{
 			isFoundIt := true
 		}
 
-		ImageSearch, MinusOneX, MinusOneY, 166, 237, 474, 299, %A_ScriptDir%\Pictures\Max Health Minus One.png
+		ImageSearch, MinusOneX, MinusOneY, 180, 246, 486, 280, %A_ScriptDir%\Pictures\Max Health Minus One.png
 		If (ErrorLevel = 0)
 		{
 			isFoundIt := true
 		}
 
-		ImageSearch, MinusTwoX, MinusTwoY, 166, 237, 474, 299, %A_ScriptDir%\Pictures\Max Health Minus Two.png
+		ImageSearch, MinusTwoX, MinusTwoY, 180, 246, 486, 280, %A_ScriptDir%\Pictures\Max Health Minus Two.png
+		If (ErrorLevel = 0)
+		{
+			isFoundIt := true
+		}
+
+		ImageSearch, MinusTwoX, MinusTwoY, 180, 246, 486, 280, %A_ScriptDir%\Pictures\Max Health Minus Three.png
 		If (ErrorLevel = 0)
 		{
 			isFoundIt := true
@@ -84,6 +123,10 @@ MissingN(pAttemptsNum){
 		Send, {Escape}
 		Sleep, 100
 		Send, {Space}
+		If (pIsCtrl)
+		{
+			MissingNPrepare()
+		}
 		Sleep, 1000
 
 		pAttemptsNum++
@@ -146,4 +189,3 @@ MissingN(pAttemptsNum){
 		MsgBox, 0, Vampire Baby, I tried a total of %pAttemptsNum% times.So I have reason to suspect that you didn't choose MissngN.`nYou're an idiot.`n:(
 	}
 }
-return
