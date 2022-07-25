@@ -1,3 +1,7 @@
+# VampireBaby
+
+---
+
 # 吸血鬼宝宝
 ## 必要声明：此脚本仅支持个人使用，此脚本永久免费，开源，切勿商用。我喜欢这个游戏然后愿意多花时间写这个脚本，就像喜欢速通的那些人一样，因为喜欢某个游戏从而愿意花费更多的时间和精力在这上面。***使用该脚本呢游戏必须全屏，Alt+Enter使游戏全屏***。
 ## **安装和运行**
@@ -14,11 +18,12 @@
 ### ***解决按键方向与移动方向相反的特性***
 #### 由于MissingN的特性是随机数值，因此一旦速度小于-100%那么就会导致按键和移动方向是相反。我将Home键改为下，End改为上，Delete改为右，Page Down改为左。该问题如图所示的解决了。
 #### ![Image](https://raw.githubusercontent.com/Waterkuiiiiii/VampireBaby/main/MdPic/KeyboardHEDP.png)
-### ***Insert：无敌的MissingN（~~除了灰死神~~）*** 此功能目前仅支持1920*1080分辨率
-#### 因为MissingN每次开始数值随机，所以是有概率开出负数生命值。（负数生命值，再怎么减都是负数，约等于无敌）但是因为是随机的有时候需要重开很多很多次。所以在这里你只需要在选中MissingN的界面上按下Insert（Ins）键就可以坐等VampireBaby给你刷出负数生命值喽，演示图如下。
-#### ![Image](https://raw.githubusercontent.com/Waterkuiiiiii/VampireBaby/main/MdPic/Invincible%20Vampire%20Before_cn.png)
-#### **Ins(Insert)在图上红圈处。**
+### ***Insert：无敌的吸血鬼（~~除了白手~~）*** 此功能目前仅支持1920*1080分辨率并且保证游戏是英语模式
+#### 因为MissingN每次开始数值随机，所以是有概率开出负数生命值。（负数生命值，再怎么减都是负数，约等于无敌）但也因为是随机的，有时候需要重开很多很多次，运气不好的时候要开上一两百次。为了解决这个问题，我实现了只需要在***角色选择的界面上***按下Ins(Insert)键就可以全自动刷负血量了。
+#### **Ins(Insert)键在图上红圈处。**
 #### ![Image](https://raw.githubusercontent.com/Waterkuiiiiii/VampireBaby/main/MdPic/KeyboardIns.png)
-#### ![Image](https://raw.githubusercontent.com/Waterkuiiiiii/VampireBaby/main/MdPic/Invicible%20Vampire%20After_cn.png)
+#### 血量上限是-2，运气不错只刷了4次。
+#### ![Image](https://github.com/Waterkuiiiiii/VampireBaby/blob/main/MdPic/Invicible%20Vampire%20.png?raw=true)
 #### ***如何想要强制退出该功能按下键盘上的PgUp键，如图上的红圈处。（本质上是重载脚本）***
 #### ![Image](https://raw.githubusercontent.com/Waterkuiiiiii/VampireBaby/main/MdPic/KeyboardPgUp.png)
+#### PS：如果你发现Ins键没效果，试一试Ctrl+Ins，虽然刷新速度会慢一点，但是能够在每次循环的时候加上是否有选择上MissingN的判断。
