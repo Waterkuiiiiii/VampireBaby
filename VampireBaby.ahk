@@ -9,12 +9,43 @@ CoordMode, Pixel, Screen
 ;-----------------------------------------------------------------
 ;Set Tray Icon
 Menu, Tray, Icon, %A_ScriptDir%\Pictures\VampireBabyTray.ico
-;Hotkeys for Exit and Reload.
+;Hotkeys for Exit and Reload, Pause/Play.
 CapsLock & Escape::
+MsgBox, 4, Vampire Baby, Would you like to leave me?`n(｡╯︵╰｡)
 SetCapsLockState, off
-ExitApp, 0
+IfMsgBox, Yes
+{
+	ExitApp, 0
+}
+else IfMsgBox, No
+{
+	MsgBox, 0, Vampire Baby, (≧◡≦)
+}
 return
-CapsLock & r::Reload
+
+CapsLock & r::
+MsgBox, 4, Vampire Baby, Would you like to Reload Me?
+IfMsgBox, Yes
+{
+	Reload
+}
+return
+
+CapsLock & p::
+If (isPauseOrPlay)
+{
+	pauseOrPlay := "Play"
+}
+else
+{
+	pauseOrPlay := "Pause"
+}
+MsgBox, 4, Vampire Baby, Would you like to %pauseOrPlay% Me?
+IfMsgBox, Yes
+{
+	isPauseOrPlay := !isPauseOrPlay
+	Pause
+}
 return
 ;-----------------------------------------------------------------
 ;Ctrl + Direction Key can hold on this key.
@@ -56,16 +87,19 @@ isFoundIt := false
 Ins::
 (isToggle := !isToggle) ? MissingNPrepareEgg() : ReloadFunc()
 MissingNPrepare()
-attemptsNum := 0
-MissingN(attemptsNum, false)
+attemptsNum := 0   
+MissingN(attemptsNum, false, true)
 return
 
-^Ins::
-(isToggle := !isToggle) ? MissingNPrepareEgg() : ReloadFunc()
-MissingNPrepare()
-attemptsNum := 0
-MissingN(attemptsNum, true)
-return
+;-------
+; This feature has been removed. If you still want to use it, you can uncomment it.
+; ^Ins::
+; (isToggle := !isToggle) ? MissingNPrepareEgg() : ReloadFunc()
+; MissingNPrepare()
+; attemptsNum := 0
+; MissingN(attemptsNum, true, true)
+; return
+;-------
 
 ;Determine if the golden egg is ticked and untick it if it is.
 MissingNPrepareEgg(){
@@ -91,28 +125,28 @@ MissingNPrepare(){
 	MouseClick, Left, missingX + 87, missingY + 87, 1, 1
 }
 
-MissingN(pAttemptsNum, pIsCtrl){
+MissingN(pAttemptsNum, pIsCtrl, pIsNoPrepare){
 	Loop
 	{
-		ImageSearch, MinusZeroX, MinusZeroY, 180, 246, 486, 280, %A_ScriptDir%\Pictures\Max Health Minus Zero.png
+		ImageSearch, MinusZeroX, MinusZeroY, 400, 240, 480, 280, %A_ScriptDir%\Pictures\Max Health Minus Zero.png
 		If (ErrorLevel = 0)
 		{
 			isFoundIt := true
 		}
 
-		ImageSearch, MinusOneX, MinusOneY, 180, 246, 486, 280, %A_ScriptDir%\Pictures\Max Health Minus One.png
+		ImageSearch, MinusOneX, MinusOneY, 400, 240, 480, 280, %A_ScriptDir%\Pictures\Max Health Minus One.png
 		If (ErrorLevel = 0)
 		{
 			isFoundIt := true
 		}
 
-		ImageSearch, MinusTwoX, MinusTwoY, 180, 246, 486, 280, %A_ScriptDir%\Pictures\Max Health Minus Two.png
+		ImageSearch, MinusTwoX, MinusTwoY, 400, 240, 480, 280, %A_ScriptDir%\Pictures\Max Health Minus Two.png
 		If (ErrorLevel = 0)
 		{
 			isFoundIt := true
 		}
 
-		ImageSearch, MinusTwoX, MinusTwoY, 180, 246, 486, 280, %A_ScriptDir%\Pictures\Max Health Minus Three.png
+		ImageSearch, MinusTwoX, MinusTwoY, 400, 240, 480, 280, %A_ScriptDir%\Pictures\Max Health Minus Three.png
 		If (ErrorLevel = 0)
 		{
 			isFoundIt := true
@@ -121,6 +155,14 @@ MissingN(pAttemptsNum, pIsCtrl){
 		If (isFoundIt)
 		{
 			break
+		}
+		else If (pIsNoPrepare)
+		{
+			Send, {Space 2}
+			Sleep, 100
+			Send, {Escape}
+			Send, {Space}
+			pIsNoPrepare := false
 		}
 
 		Send, {Escape}
