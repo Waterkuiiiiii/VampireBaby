@@ -2,11 +2,19 @@
 ; #Warn
 SendMode Input
 SetWorkingDir %A_ScriptDir%
+
 #SingleInstance, force
 CoordMode, Pixel, Screen
 #MaxThreadsPerHotkey, 2
-
-^+`::ExitApp
+;-----------------------------------------------------------------
+;Set Tray Icon
+Menu, Tray, Icon, %A_ScriptDir%\Pictures\VampireBaby.ico
+;Hotkeys for Exit and Reload.
+CapsLock & Escape::
+SetCapsLockState, off
+ExitApp, 0
+return
+CapsLock & r::Reload
 return
 ;-----------------------------------------------------------------
 ;Ctrl + Direction Key can hold on this key.
@@ -27,7 +35,7 @@ return
 Send, {Right down}
 return
 
-`::
+PgUp::
 Send, {Up up}{Down up}{Left up}{Right up}
 return
 ;-----------------------------------------------------------------
@@ -42,14 +50,11 @@ PgDn::Left
 return
 ;-----------------------------------------------------------------
 ;Make MissingN FINO Max Max health is negative
-
-PgUp::Reload
-
 isToggle := false
 isFoundIt := false
 
 Ins::
-MissingNPrepareEgg()
+(isToggle := !isToggle) ? MissingNPrepareEgg() : ReloadFunc()
 MissingNPrepare()
 attemptsNum := 0
 MissingN(attemptsNum, false)
@@ -87,9 +92,7 @@ MissingNPrepare(){
 }
 
 MissingN(pAttemptsNum, pIsCtrl){
-	isToggle := !isToggle
-
-	While, isToggle
+	Loop
 	{
 		ImageSearch, MinusZeroX, MinusZeroY, 180, 246, 486, 280, %A_ScriptDir%\Pictures\Max Health Minus Zero.png
 		If (ErrorLevel = 0)
@@ -188,4 +191,9 @@ MissingN(pAttemptsNum, pIsCtrl){
 	{
 		MsgBox, 0, Vampire Baby, I tried a total of %pAttemptsNum% times.So I have reason to suspect that you didn't choose MissngN.`nYou're an idiot.`n:(
 	}
+}
+
+ReloadFunc()
+{
+	Reload
 }
