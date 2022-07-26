@@ -1,4 +1,4 @@
-# VampireBaby
+# VampireBaby for v0.0.2
 
 ## Necessary Disclaimer: This script is for personal use only, it's permanently free and open source, don't commercialize.***The game must be fullscreen when using this sctript, Alt + Enter make the game fullscreen.***
 
@@ -48,7 +48,7 @@
 
 ---
 
-# 吸血鬼宝宝
+# 吸血鬼宝宝 v0.0.2版本介绍
 
 ## 必要声明：此脚本仅支持个人使用，此脚本永久免费，开源，切勿商用。***使用该脚本呢游戏必须全屏，Alt+Enter使游戏全屏***。
 
