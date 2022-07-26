@@ -8,7 +8,7 @@ CoordMode, Pixel, Screen
 #MaxThreadsPerHotkey, 2
 ;-----------------------------------------------------------------
 ;Set Tray Icon
-Menu, Tray, Icon, %A_ScriptDir%\Pictures\VampireBaby.ico
+Menu, Tray, Icon, %A_ScriptDir%\Pictures\VampireBabyTray.ico
 ;Hotkeys for Exit and Reload.
 CapsLock & Escape::
 SetCapsLockState, off
@@ -61,7 +61,7 @@ MissingN(attemptsNum, false)
 return
 
 ^Ins::
-MissingNPrepareEgg()
+(isToggle := !isToggle) ? MissingNPrepareEgg() : ReloadFunc()
 MissingNPrepare()
 attemptsNum := 0
 MissingN(attemptsNum, true)
