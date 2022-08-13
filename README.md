@@ -2,7 +2,7 @@ English | [中文](./README_CN.md)
 
 # VampireBaby for v0.0.2
 
-## Necessary Disclaimer: ***The game must be fullscreen when using this sctript, Alt + Enter make the game fullscreen.***
+## Necessary Handle: ***The game must be fullscreen when using this sctript, Alt + Enter make the game fullscreen.***
 
 ## **Install and Run**
 
